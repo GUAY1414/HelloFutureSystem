@@ -1,0 +1,36 @@
+body {
+    font-family: Arial;
+    background: #f0f0f0;
+    padding: 20px;
+}
+h2 {
+    color: #333;
+}
+form {
+    background: #fff;
+    padding: 15px;
+    border-radius: 10px;
+    max-width: 400px;
+}
+input, textarea, button {
+    margin-top: 8px;
+    width: 100%;
+    padding: 8px;
+}
+a {
+    display: inline-block;
+    margin-top: 10px;
+    color: #007BFF;
+    text-decoration: none;
+}
+a:hover {
+    text-decoration: underline;
+}
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+td, th {
+    padding: 10px;
+    border: 1px solid #ccc;
+}
