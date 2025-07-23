@@ -30,6 +30,10 @@ while ($row = $res->fetch_assoc()) {
     $unlock_datetime = date("Y-m-d H:i:s", strtotime($row['unlock_datetime']));
     $isUnlocked = strtotime($now) >= strtotime($unlock_datetime);
 
+    // Edit time limit logic (60 minutes from creation)
+    $createdAt = strtotime($row['created_at']);
+    $canEdit = (time() - $createdAt) <= 3600;
+
     echo "<div class='card'>";
     echo "<h3>" . htmlspecialchars($row['title']) . "</h3>";
     echo "<p>" . htmlspecialchars($row['description']) . "</p>";
@@ -40,12 +44,17 @@ while ($row = $res->fetch_assoc()) {
         echo "<p><em>Locked until {$row['unlock_datetime']}</em></p>";
     }
 
-    echo "<p>
-            <a href='edit_memory.php?id={$row['id']}'>✏ Edit</a> | 
-            <a href='delete_memory.php?id={$row['id']}' onclick=\"return confirm('Are you sure you want to delete this memory?');\">🗑 Delete</a>
-          </p>";
+    echo "<p>";
+    if ($canEdit) {
+        echo "<a href='edit_memory.php?id={$row['id']}'>✏ Edit</a> | ";
+    } else {
+        echo "<em>⏳ Edit expired</em> | ";
+    }
+    echo "<a href='delete_memory.php?id={$row['id']}' onclick=\"return confirm('Are you sure you want to delete this memory?');\">🗑 Delete</a>";
+    echo "</p>";
     echo "</div><hr>";
 }
+
 ?>
 
 <?php include 'footer.php'; ?>
