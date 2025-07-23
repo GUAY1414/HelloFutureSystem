@@ -24,4 +24,3 @@ $stmt->execute();
 header("Location: profile.php?msg=Profile updated");
 exit();
 ?>
-<?php include 'header.php'; ?>
