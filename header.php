@@ -1,18 +1,17 @@
+<!-- /HelloFutureSystem/header.php -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Hello Future</title>
-    <link rel="stylesheet" href="style.css"> <!-- adjust path if needed -->
+    <title>Hello Future System</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Press+Start+2P&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <div class="container">
     <header>
-        <h2>Hello, Future!</h2>
-        <nav>
-            <a href="index.php">Home</a> |
-            <a href="login.php">Login</a> |
-            <a href="register.php">Register</a>
-        </nav>
-        <hr>
+        <h1>Hello Future!</h1>
     </header>
+    </div>
     <main>

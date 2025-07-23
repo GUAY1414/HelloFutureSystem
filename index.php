@@ -1,39 +1,44 @@
 <?php
 session_start();
 if (isset($_SESSION['user_id'])) {
-    header("Location: " . ($_SESSION['role'] === 'admin' ? 'admin.php' : 'dashboard.php'));
+    header("Location: dashboard.php");
     exit();
 }
 ?>
-
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Hello Future - Welcome</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hello, Future!</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1 style="text-align:center;">🚀 Welcome to Hello Future!</h1>
+    <div class="container">
+        <h1 class="typewriter">HELLO, FUTURE!</h1>
+        <div class="terminal-effect">
+            <p>> This is your digital time capsule. <br>
+               > Save memories. Unlock them in the future. <br>
+               > A retro-futuristic vault just for you.
+            </p>
+        </div>
 
-    <p style="text-align:center; font-size: 18px;">
-        Where the future begins — today!
-    </p>
+        <form action="login_submit.php" method="POST">
+            <label for="email">Email</label>
+            <input type="email" name="email" id="email" required>
 
-    <p style="text-align:center; max-width: 600px; margin: 0 auto;">
-        <strong>Hello Future</strong> is a simple and secure login and registration system made to guide users and admins into the future of streamlined access.
-        Whether you're managing behind the scenes or just getting started, we’ve built a space for you.
-    </p>
+            <label for="password">Password</label>
+            <input type="password" name="password" id="password" required>
 
-    <p style="text-align:center; font-weight: bold; font-size: 16px; margin-top: 30px;">
-        🔐 Ready to begin?
-    </p>
+            <button type="submit" class="btn">Login</button>
+        </form>
 
-    <p style="text-align:center;">
-        <a href="login.php">Login</a> |
-        <a href="register.php">Register</a>
-    </p>
+        <p>Don't have an account? <a href="register.php">Register Here</a></p>
+    </div>
 
-    <p style="text-align:center; margin-top: 40px; font-size: 14px; color: gray;">
-        &copy; <?= date("Y") ?> Hello Future. All rights reserved.
-    </p>
+    <div class="footer">
+        <p>⏳ Hello, Future! | Retro-Tech Edition</p>
+    </div>
 </body>
 </html>
