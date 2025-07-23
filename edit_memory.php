@@ -32,6 +32,9 @@ if ($timeElapsed > 3600) {
     exit();
 }
 
+// Time left for JS countdown
+$timeLeft = max(0, 3600 - $timeElapsed);
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $title = $_POST['title'];
     $description = $_POST['description'];
@@ -57,11 +60,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     header("Location: dashboard.php?msg=Memory+updated");
     exit();
 }
-
-// Calculate time left
-$timeLeft = max(0, 3600 - $timeElapsed);
-$minutesLeft = floor($timeLeft / 60);
-$secondsLeft = $timeLeft % 60;
 ?>
 
 <!DOCTYPE html>
@@ -75,7 +73,7 @@ $secondsLeft = $timeLeft % 60;
 
 <div class="edit-container">
     <h2>Edit Memory</h2>
-    <div id="countdown">⏳ Time left: <?= $minutesLeft ?>m <?= str_pad($secondsLeft, 2, '0', STR_PAD_LEFT) ?>s</div>
+    <div id="countdown"></div> <!-- JS will render time left here -->
     
     <form method="POST" enctype="multipart/form-data">
         <label>Title:</label>
@@ -96,6 +94,31 @@ $secondsLeft = $timeLeft % 60;
         <a href="dashboard.php"><button type="button">Cancel</button></a>
     </form>
 </div>
+
+<script>
+    let timeLeft = <?= $timeLeft ?>; // PHP time left in seconds
+
+    const countdownEl = document.getElementById("countdown");
+
+    const countdown = setInterval(() => {
+        if (timeLeft <= 0) {
+            countdownEl.innerText = "⏳ Edit time expired.";
+            const form = document.querySelector("form");
+            if (form) form.style.display = "none";
+
+            clearInterval(countdown);
+            setTimeout(() => {
+                window.location.href = "dashboard.php?msg=Edit+time+expired";
+            }, 3000);
+            return;
+        }
+
+        const minutes = Math.floor(timeLeft / 60);
+        const seconds = timeLeft % 60;
+        countdownEl.innerText = `⏳ Time left: ${minutes}m ${seconds < 10 ? '0' : ''}${seconds}s`;
+        timeLeft--;
+    }, 1000);
+</script>
 
 </body>
 </html>
