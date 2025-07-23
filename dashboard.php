@@ -10,12 +10,12 @@ if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'user') {
 $user_id = $_SESSION['user_id'];
 $res = $conn->query("SELECT * FROM memories WHERE user_id=$user_id ORDER BY created_at DESC");
 
-date_default_timezone_set('Asia/Manila'); // Set timezone
+date_default_timezone_set('Asia/Manila'); 
 $now = date("Y-m-d H:i:s");
 ?>
 
 <?php include 'header.php'; ?>
-<!-- User Memory Time Capsule Section -->
+
 <h2>Welcome to your Time Capsule</h2>
 <a href="create.php" class="btn">➕ Add New Memory</a>
 <a href="logout.php" class="btn">Exit</a>
@@ -30,7 +30,7 @@ while ($row = $res->fetch_assoc()) {
     $unlock_datetime = date("Y-m-d H:i:s", strtotime($row['unlock_datetime']));
     $isUnlocked = strtotime($now) >= strtotime($unlock_datetime);
 
-    // Edit time limit logic (60 minutes from creation)
+    
     $createdAt = strtotime($row['created_at']);
     $canEdit = (time() - $createdAt) <= 3600;
 

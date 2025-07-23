@@ -10,7 +10,7 @@ if (!isset($_SESSION['user_id'])) {
 $id = $_GET['id'] ?? 0;
 $user_id = $_SESSION['user_id'];
 
-// Fetch memory
+
 $stmt = $conn->prepare("SELECT * FROM memories WHERE id=? AND user_id=?");
 $stmt->bind_param("ii", $id, $user_id);
 $stmt->execute();
@@ -21,7 +21,7 @@ if (!$memory) {
     exit();
 }
 
-// Time-based restriction: Allow editing only within 60 minutes of creation
+
 date_default_timezone_set('Asia/Manila');
 $createdAt = strtotime($memory['created_at']);
 $now = time();
@@ -32,7 +32,7 @@ if ($timeElapsed > 3600) {
     exit();
 }
 
-// Time left for JS countdown
+
 $timeLeft = max(0, 3600 - $timeElapsed);
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -73,7 +73,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 <div class="edit-container">
     <h2>Edit Memory</h2>
-    <div id="countdown"></div> <!-- JS will render time left here -->
+    <div id="countdown"></div> 
     
     <form method="POST" enctype="multipart/form-data">
         <label>Title:</label>
@@ -96,7 +96,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 </div>
 
 <script>
-    let timeLeft = <?= $timeLeft ?>; // PHP time left in seconds
+    let timeLeft = <?= $timeLeft ?>; 
 
     const countdownEl = document.getElementById("countdown");
 

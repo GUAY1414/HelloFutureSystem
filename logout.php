@@ -1,7 +1,7 @@
 <?php
 session_start();
-session_unset();             // remove all session variables
-session_destroy();           // destroy session
-setcookie(session_name(), '', time() - 3600);  // destroy session cookie
+session_unset();             
+session_destroy();           
+setcookie(session_name(), '', time() - 3600);  
 header("Location: index.php");
 exit();

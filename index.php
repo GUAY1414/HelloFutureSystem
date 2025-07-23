@@ -19,8 +19,8 @@ if (isset($_SESSION['user_id'])) {
         <h1 class="typewriter">HELLO, FUTURE!</h1>
         <div class="terminal-effect">
             <p>> This is your digital time capsule. <br>
-               > Save memories. Unlock them in the future. <br>
-               > A retro-futuristic vault just for you.
+            > Save memories. Unlock them in the future. <br>
+            > A retro-futuristic vault just for you.
             </p>
         </div>
 

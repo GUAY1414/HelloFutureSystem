@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Press+Start+2P&display=swap');
 
-/* Global styles */
+
 body {
   margin: 0;
   padding: 0;
@@ -37,7 +37,7 @@ a:hover {
   color: #ffd700;
 }
 
-/* Container */
+
 .container {
   max-width: 1000px;
   margin: 2rem auto;
@@ -49,7 +49,7 @@ a:hover {
   text-align: center;
 }
 
-/* Buttons */
+
 button, .btn {
   background-color: #00ffcc;
   border: none;
@@ -68,7 +68,7 @@ button:hover, .btn:hover {
   box-shadow: 0 0 20px #ffd700aa;
 }
 
-/* Inputs */
+
 input[type="text"], input[type="password"], input[type="email"], textarea {
   width: 100%;
   padding: 10px;
@@ -80,7 +80,7 @@ input[type="text"], input[type="password"], input[type="email"], textarea {
   border-radius: 4px;
 }
 
-/* Terminal box */
+
 .terminal-effect {
   border: 2px dashed #00ffcc;
   padding: 1rem;
@@ -94,7 +94,7 @@ input[type="text"], input[type="password"], input[type="email"], textarea {
   margin-bottom: 1rem;
 }
 
-/* Responsive */
+
 @media screen and (max-width: 600px) {
   .container {
     padding: 1rem;

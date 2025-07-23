@@ -7,21 +7,21 @@ if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'admin') {
     exit;
 }
 
-// Delete User
+
 if (isset($_GET['delete'])) {
     $uid = intval($_GET['delete']);
     $conn->prepare("DELETE FROM users WHERE id=?")->bind_param("i", $uid)->execute();
     $conn->prepare("DELETE FROM memories WHERE user_id=?")->bind_param("i", $uid)->execute();
 }
 
-// Update User
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['update_user'])) {
     $uid = intval($_POST['user_id']);
     $email = $_POST['email'];
     $currentPassword = $_POST['current_password'];
     $newPassword = $_POST['password'];
 
-    // Check current password
+
     $stmt = $conn->prepare("SELECT password FROM users WHERE id=?");
     $stmt->bind_param("i", $uid);
     $stmt->execute();

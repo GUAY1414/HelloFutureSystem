@@ -1,4 +1,4 @@
-/* Retro-Futuristic Nostalgic Tech Theme */
+
 
 @import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Press+Start+2P&display=swap');
 
@@ -118,7 +118,7 @@ input[type="text"], input[type="password"], input[type="email"], textarea {
   border-right: .15em solid #00ffcc;
   white-space: nowrap;
   animation: typing 3s steps(30, end), blink-caret .75s step-end infinite;
-  width: 100%; /* or set a fixed width like 20ch */
+  width: 100%; 
 }
 
 form {
